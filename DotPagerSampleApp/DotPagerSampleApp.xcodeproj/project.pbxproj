@@ -17,6 +17,7 @@
 		8592182F23F402B500FF3A9F /* DotPagerSampleAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8592182E23F402B500FF3A9F /* DotPagerSampleAppUITests.swift */; };
 		8592183E23F402F700FF3A9F /* DotPager in Frameworks */ = {isa = PBXBuildFile; productRef = 8592183D23F402F700FF3A9F /* DotPager */; };
 		8592184923F404FF00FF3A9F /* image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8592184823F404FF00FF3A9F /* image.xcassets */; };
+		8592184D23F412D600FF3A9F /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8592184C23F412D600FF3A9F /* PostView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		8592182E23F402B500FF3A9F /* DotPagerSampleAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotPagerSampleAppUITests.swift; sourceTree = "<group>"; };
 		8592183023F402B500FF3A9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8592184823F404FF00FF3A9F /* image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = image.xcassets; sourceTree = "<group>"; };
+		8592184C23F412D600FF3A9F /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				8592180C23F402B300FF3A9F /* AppDelegate.swift */,
 				8592180E23F402B300FF3A9F /* SceneDelegate.swift */,
 				8592181023F402B300FF3A9F /* ContentView.swift */,
+				8592184C23F412D600FF3A9F /* PostView.swift */,
 				8592181223F402B500FF3A9F /* Assets.xcassets */,
 				8592181723F402B500FF3A9F /* LaunchScreen.storyboard */,
 				8592181A23F402B500FF3A9F /* Info.plist */,
@@ -289,6 +292,7 @@
 			files = (
 				8592180D23F402B300FF3A9F /* AppDelegate.swift in Sources */,
 				8592180F23F402B300FF3A9F /* SceneDelegate.swift in Sources */,
+				8592184D23F412D600FF3A9F /* PostView.swift in Sources */,
 				8592181123F402B300FF3A9F /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
