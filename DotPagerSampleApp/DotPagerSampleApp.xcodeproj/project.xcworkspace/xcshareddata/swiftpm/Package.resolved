@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "DotPager",
+        "repositoryURL": "git@github.com:yotsu12/DotPager.git",
+        "state": {
+          "branch": "master",
+          "revision": "75be2fe15bee4a184ad8467ab718bfec0a5fb84e",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
