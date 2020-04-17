@@ -58,35 +58,38 @@ public struct DotPager<Content>: View where Content: View {
     
     public var body : some View {
             ZStack(alignment: .center) {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 0) {
-                        ForEach(0..<self.data.count) {
-                            self.content(self.data[$0].resizable())
-                                .frame(width: self.contentWidth)
-                                .aspectRatio(self.contentWidth / self.contentHeight, contentMode: self.contentMode)
+                VStack(alignment: .center, spacing: 0) {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 0) {
+                            ForEach(0..<self.data.count) {
+                                self.content(self.data[$0].resizable())
+                                    .frame(width: self.contentWidth)
+                                    .aspectRatio(self.contentWidth / self.contentHeight, contentMode: self.contentMode)
+                            }
                         }
                     }
+                    .content.offset(x: self.offset)
+                    .frame(width: self.contentWidth, height: self.contentHeight, alignment: .leading)
+                    .gesture(DragGesture()
+                        .onChanged({ value in
+                              if self.index == self.data.endIndex - 1 && value.translation.width < 0 { return }
+                              if self.index == 0 && value.translation.width > 0 { return }
+                              self.offset = value.translation.width - self.contentWidth * CGFloat(self.index)
+                          })
+                        .onEnded({ value in
+                            if value.predictedEndTranslation.width < -self.thresholdType.getSize(value: self.contentWidth) {
+                                self.index = min(self.index + 1, self.data.endIndex - 1)
+                            } else if value.predictedEndTranslation.width > self.thresholdType.getSize(value: self.contentWidth) {
+                                self.index = max(self.index - 1, 0)
+                            }
+                            
+                            withAnimation {
+                                self.offset = -self.contentWidth * CGFloat(self.index)
+                            }
+                        })
+                    )
+                    Spacer()
                 }
-                .content.offset(x: self.offset)
-                .frame(width: self.contentWidth, height: self.contentHeight, alignment: .leading)
-                .gesture(DragGesture()
-                    .onChanged({ value in
-                          if self.index == self.data.endIndex - 1 && value.translation.width < 0 { return }
-                          if self.index == 0 && value.translation.width > 0 { return }
-                          self.offset = value.translation.width - self.contentWidth * CGFloat(self.index)
-                      })
-                    .onEnded({ value in
-                        if value.predictedEndTranslation.width < -self.thresholdType.getSize(value: self.contentWidth) {
-                            self.index = min(self.index + 1, self.data.endIndex - 1)
-                        } else if value.predictedEndTranslation.width > self.thresholdType.getSize(value: self.contentWidth) {
-                            self.index = max(self.index - 1, 0)
-                        }
-                        
-                        withAnimation {
-                            self.offset = -self.contentWidth * CGFloat(self.index)
-                        }
-                    })
-                )
                 
                 VStack(alignment: .center, spacing: 0) {
                     Spacer()
