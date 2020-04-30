@@ -63,8 +63,6 @@ public struct DotPager<Content>: View where Content: View {
                         HStack(spacing: 0) {
                             ForEach(0..<self.data.count) {
                                 self.content(self.data[$0].resizable())
-                                    .frame(width: self.contentWidth)
-                                    .aspectRatio(self.contentWidth / self.contentHeight, contentMode: self.contentMode)
                             }
                         }
                     }
