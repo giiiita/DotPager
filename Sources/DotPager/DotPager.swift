@@ -28,6 +28,7 @@ public struct DotPager<Content>: View where Content: View {
     private let thresholdType: ThresholdType
     private let normalColor: Color
     private let selectedColor: Color
+    private let dotSize: CGFloat
     private let pageControlOffsetY: CGFloat
     @Binding private var index: Int
     @Binding private var offset: CGFloat
@@ -41,6 +42,7 @@ public struct DotPager<Content>: View where Content: View {
                 thresholdType: ThresholdType = .harf,
                 normalColor: Color = Color.gray,
                 selectedColor: Color = Color.black,
+                dotSize: CGFloat = 10.0,
                 pageControlOffsetY: CGFloat = 20.0,
                 content: @escaping (Image) -> Content) {
         self.data = data.map { $0 }
@@ -53,6 +55,7 @@ public struct DotPager<Content>: View where Content: View {
         self.thresholdType = thresholdType
         self.normalColor = normalColor
         self.selectedColor = selectedColor
+        self.dotSize = dotSize
         self.pageControlOffsetY = pageControlOffsetY
     }
     
@@ -95,6 +98,7 @@ public struct DotPager<Content>: View where Content: View {
                          elementCount: self.data.count,
                          normalColor: self.normalColor,
                          selectedColor: self.selectedColor,
+                         dotSize: self.dotSize,
                          index: self.$index
                     ).offset(x: 0, y: self.pageControlOffsetY)
                 }
@@ -107,12 +111,13 @@ private struct PageControlView: View {
     var elementCount: Int
     var normalColor: Color
     var selectedColor: Color
+    var dotSize: CGFloat
     @Binding var index: Int
     
     var body: some View {
         HStack(alignment: .center, spacing: 8.0) {
             ForEach(0..<self.elementCount) { index in
-                Circle().frame(width: 10, height: 10)
+                Circle().frame(width: self.dotSize, height: self.dotSize)
                     .foregroundColor((self.index == index) ?  self.selectedColor : self.normalColor)
             }
         }.padding(.bottom, 130)
