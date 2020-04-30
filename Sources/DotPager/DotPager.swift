@@ -24,7 +24,6 @@ public struct DotPager<Content>: View where Content: View {
     private let content: (Image) -> Content
     private let contentWidth: CGFloat
     private let contentHeight: CGFloat
-    private let contentMode: ContentMode
     private let thresholdType: ThresholdType
     private let normalColor: Color
     private let selectedColor: Color
@@ -38,7 +37,6 @@ public struct DotPager<Content>: View where Content: View {
                 offset: Binding<CGFloat>,
                 contentWidth: CGFloat,
                 contentHeight: CGFloat,
-                contentMode: ContentMode = .fill,
                 thresholdType: ThresholdType = .harf,
                 normalColor: Color = Color.gray,
                 selectedColor: Color = Color.black,
@@ -51,7 +49,6 @@ public struct DotPager<Content>: View where Content: View {
         self.content = content
         self.contentWidth = contentWidth
         self.contentHeight = contentHeight
-        self.contentMode = contentMode
         self.thresholdType = thresholdType
         self.normalColor = normalColor
         self.selectedColor = selectedColor
